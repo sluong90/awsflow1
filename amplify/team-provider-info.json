@@ -1,0 +1,14 @@
+{
+    "master": {
+        "awscloudformation": {
+            "AuthRoleName": "awsflow1-master-20190601102508-authRole",
+            "UnauthRoleArn": "arn:aws:iam::504041726305:role/awsflow1-master-20190601102508-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::504041726305:role/awsflow1-master-20190601102508-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "awsflow1-master-20190601102508-deployment",
+            "UnauthRoleName": "awsflow1-master-20190601102508-unauthRole",
+            "StackName": "awsflow1-master-20190601102508",
+            "StackId": "arn:aws:cloudformation:us-west-2:504041726305:stack/awsflow1-master-20190601102508/5979cf60-84ab-11e9-ad5c-0a1528792fce"
+        }
+    }
+}
