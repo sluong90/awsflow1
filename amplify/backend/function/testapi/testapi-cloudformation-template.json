@@ -59,8 +59,8 @@
 				"Runtime": "nodejs8.10",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "awsflow1-dev-20190601103353-deployment",
-					"S3Key": "amplify-builds/testapi-1559421311-latest-build.zip"
+					"S3Bucket": "awsflow1-master-20190601102508-deployment",
+					"S3Key": "amplify-builds/testapi-1559422913-latest-build.zip"
 				}
 			}
 		},
