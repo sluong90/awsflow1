@@ -1,0 +1,62 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "awsflow1-master-20190601102508-authRole",
+			"UnauthRoleArn": "arn:aws:iam::504041726305:role/awsflow1-master-20190601102508-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::504041726305:role/awsflow1-master-20190601102508-authRole",
+			"Region": "us-west-2",
+			"DeploymentBucketName": "awsflow1-master-20190601102508-deployment",
+			"UnauthRoleName": "awsflow1-master-20190601102508-unauthRole",
+			"StackName": "awsflow1-master-20190601102508",
+			"StackId": "arn:aws:cloudformation:us-west-2:504041726305:stack/awsflow1-master-20190601102508/5979cf60-84ab-11e9-ad5c-0a1528792fce"
+		}
+	},
+	"function": {
+		"testapi": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [],
+			"lastBuildTimeStamp": "2019-06-01T21:01:53.137Z",
+			"lastPackageTimeStamp": "2019-06-01T21:01:54.045Z",
+			"distZipFilename": "testapi-1559422913-latest-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/awsflow1-master-20190601102508-deployment/amplify-cfn-templates/function/testapi-cloudformation-template.json",
+				"logicalId": "functiontestapi"
+			},
+			"lastPushTimeStamp": "2019-06-01T21:03:34.860Z",
+			"output": {
+				"Region": "us-west-2",
+				"Arn": "arn:aws:lambda:us-west-2:504041726305:function:testapifunction-master",
+				"Name": "testapifunction-master"
+			},
+			"lastPushDirHash": "ZtEMOSfDVBLF10eOQVui7ENG2tM="
+		}
+	},
+	"api": {
+		"awsflow": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "testapi",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/awsflow1-master-20190601102508-deployment/amplify-cfn-templates/api/awsflow-cloudformation-template.json",
+				"logicalId": "apiawsflow"
+			},
+			"lastPushTimeStamp": "2019-06-01T21:03:34.860Z",
+			"output": {
+				"ApiName": "awsflow",
+				"RootUrl": "https://rknjgfi9vi.execute-api.us-west-2.amazonaws.com/master"
+			},
+			"lastPushDirHash": "ktoPA6KREKRhB6w6g7z0n7h9ZwM="
+		}
+	}
+}

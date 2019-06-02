@@ -24,68 +24,81 @@ app.use(function (req, res, next) {
   next()
 });
 
-
-/**********************
- * Example get method *
- **********************/
-
 app.get('/people', function (req, res) {
-  // Add your code here
-  res.json({ success: 'get call succeed!', url: req.url });
-});
+  axios.get('https://swapi.co/api/people/')
+    .then(response => {
+      const people = response.data.results
+      res.json({
+        url: req.url,
+        people
+      })
+    })
+    .catch(err => {
+      res.json({ error: err })
+    })
 
-app.get('/people/*', function (req, res) {
-  // Add your code here
-  res.json({ success: 'get call succeed!', url: req.url });
-});
 
-/****************************
-* Example post method *
-****************************/
+  /**********************
+   * Example get method *
+   **********************/
 
-app.post('/people', function (req, res) {
-  // Add your code here
-  res.json({ success: 'post call succeed!', url: req.url, body: req.body })
-});
+  app.get('/people', function (req, res) {
+    // Add your code here
+    res.json({ success: 'get call succeed!', url: req.url });
+  });
 
-app.post('/people/*', function (req, res) {
-  // Add your code here
-  res.json({ success: 'post call succeed!', url: req.url, body: req.body })
-});
+  app.get('/people/*', function (req, res) {
+    // Add your code here
+    res.json({ success: 'get call succeed!', url: req.url });
+  });
 
-/****************************
-* Example post method *
-****************************/
+  /****************************
+  * Example post method *
+  ****************************/
 
-app.put('/people', function (req, res) {
-  // Add your code here
-  res.json({ success: 'put call succeed!', url: req.url, body: req.body })
-});
+  app.post('/people', function (req, res) {
+    // Add your code here
+    res.json({ success: 'post call succeed!', url: req.url, body: req.body })
+  });
 
-app.put('/people/*', function (req, res) {
-  // Add your code here
-  res.json({ success: 'put call succeed!', url: req.url, body: req.body })
-});
+  app.post('/people/*', function (req, res) {
+    // Add your code here
+    res.json({ success: 'post call succeed!', url: req.url, body: req.body })
+  });
 
-/****************************
-* Example delete method *
-****************************/
+  /****************************
+  * Example post method *
+  ****************************/
 
-app.delete('/people', function (req, res) {
-  // Add your code here
-  res.json({ success: 'delete call succeed!', url: req.url });
-});
+  app.put('/people', function (req, res) {
+    // Add your code here
+    res.json({ success: 'put call succeed!', url: req.url, body: req.body })
+  });
 
-app.delete('/people/*', function (req, res) {
-  // Add your code here
-  res.json({ success: 'delete call succeed!', url: req.url });
-});
+  app.put('/people/*', function (req, res) {
+    // Add your code here
+    res.json({ success: 'put call succeed!', url: req.url, body: req.body })
+  });
 
-app.listen(3000, function () {
-  console.log("App started")
-});
+  /****************************
+  * Example delete method *
+  ****************************/
 
-// Export the app object. When executing the application local this does nothing. However,
-// to port it to AWS Lambda we will create a wrapper around that will load the app from
-// this file
-module.exports = app
+  app.delete('/people', function (req, res) {
+    // Add your code here
+    res.json({ success: 'delete call succeed!', url: req.url });
+  });
+
+  app.delete('/people/*', function (req, res) {
+    // Add your code here
+    res.json({ success: 'delete call succeed!', url: req.url });
+  });
+
+  app.listen(3000, function () {
+    console.log("App started")
+  });
+
+  // Export the app object. When executing the application local this does nothing. However,
+  // to port it to AWS Lambda we will create a wrapper around that will load the app from
+  // this file
+  module.exports = app
